@@ -1,0 +1,22 @@
+   {template: inc/header.html} 
+    
+    
+    <main class="probootstrap-main">
+
+      <section class="probootstrap-bg probootstrap-animate" data-animate-effect="fadeInLeft" style="background-image: url({$bat.theme}/assets/images/bg_1.jpg);"></section>
+
+      <section class="probootstrap-animate">
+        <h1 class="mb-4 text-primary">{$page.title}</h1>
+        <p class="header-desc">{if: $page.desc}{$page.desc}{else}{$settings.description}{/if}</p>
+
+        <p class="lead">{if: $bat.notify}
+                <div id="notify" class="alert alert-{$bat.notify.type}">{$bat.notify.text}</div>
+                {/if}
+                {$page.content}
+</p>
+  
+              </section>
+
+    </main>
+
+  {template: inc/footer.html}
