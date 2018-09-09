@@ -1,0 +1,122 @@
+<style>
+    .frontiers-panel {
+        border: 1px solid #e9e9e9;
+        padding: 15px 10px;
+    }
+
+    .frontiers-panel .frontiers-panel-title {
+        font-weight: 600;
+        font-size: 12px;
+        color: #474f57;
+        margin: 0;
+    }
+
+    .frontiers-panel-title > span {
+        font-weight: 700;
+        font-size: 20px;
+        color: #401080;
+    }    
+
+    .frontiers-panel .frontiers-panel-desc {
+        font-size: 14px;
+        line-height: 25px;
+        color: #909ead;
+        margin: 0;
+    }
+
+    .frontiers-panel .frontiers-panel-desc > span {
+        color: #83909e;
+        font-weight: 700;
+    }
+
+    .frontiers-panel-desc .frontiers-panel-desc-link {
+        color: #83909e;
+    }
+
+    .frontiers-panel-desc .frontiers-panel-desc-link:hover {
+        color: #401080;
+    }
+
+    .frontiers-footer {
+        border: 0;
+        background: none;
+    }
+
+    .frontiers-footer > .frontiers-link {
+        font-weight: 600;
+        font-size: 12px;
+        color: #474f57;
+        margin-right: 15px;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    .frontiers-footer > .frontiers-link.frontiers-link-pulse {
+        -webkit-animation: pulse 4s ease-in infinite;
+                animation: pulse 4s ease-in infinite;    
+    }
+
+    .frontiers-footer > .frontiers-link:hover {
+        color: #401080;
+    }
+
+    @-webkit-keyframes pulse {
+        25% { opacity: 1; }
+        30% { opacity: 0.3; }
+        35% { opacity: 1; }
+    }
+
+    @keyframes pulse {
+        25% { opacity: 1; }
+        30% { opacity: 0.3; }
+        35% { opacity: 1; }
+    }
+
+    @media (min-width: 360px)
+    {
+        .frontiers-footer > .frontiers-link {
+            display: inline-block;
+        }
+    }
+
+</style>
+
+<article class="row">
+    <div class="col-md-12">
+        <div class="panel frontiers-panel">
+            <div class="panel-heading">
+                <h3 class="panel-title frontiers-panel-title">
+                <span>frontiers</span> has been activated</h3>
+            </div>
+            <div class="panel-body frontiers-body">
+                <p class="frontiers-panel-desc">Simple and clean HTML5 Template.</p>
+            </div>
+            <div class="panel-footer frontiers-footer">
+                
+																																																																            </div>
+        </div>
+    </div>
+
+    {loop: $themes}
+    <div class="col-md-4 col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><a href="{?= url([ADMIN, 'settings', 'theme', $value.dir]) ?}">{$value.name}</a></h3>
+            </div>
+            <div class="panel-body">
+                <a href="{?= url([ADMIN, 'settings', 'theme', $value.dir]) ?}" class="theme-preview">
+                    <img src="{?= url(['themes', $value.dir, $value.thumb]) ?}" class="img-responsive">
+                </a>
+            </div>
+            <div class="panel-footer">
+                {if: $settings.theme == $value.dir}
+                <a href="#" class="btn btn-primary btn-block btn-xs disabled">{$lang.settings.active}</a>
+                {else}
+                <a href="{?= url([ADMIN, 'settings', 'theme', $value.dir, 'activate']) ?}" class="btn btn-primary btn-block btn-xs">{$lang.settings.activate}</a>
+                {/if}
+                <a href="{?= url([ADMIN, 'settings', 'theme', $value.dir]) ?}" class="btn btn-warning btn-block btn-xs">{$lang.general.edit}</a>
+            </div>
+        </div>
+    </div>
+    {/loop}
+</article>
